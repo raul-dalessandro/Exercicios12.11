@@ -21,7 +21,7 @@ string[,] boletim = new string[quantidadeMaterias, 7];
 
 
 PercorrerMaterias(boletim);
-MediaNota(boletim);
+CalcularMedia(boletim);
 DescobrirSituacao(boletim);
 ImprimirBoletim(boletim, quantidadeMaterias, 7);
 
@@ -41,7 +41,7 @@ void PercorrerMaterias(string [,] boletim)
     }
 }
 
-void MediaNota(string [,] boletim)
+void CalcularMedia(string [,] boletim)
 {
     for (int linha = 0; linha < quantidadeMaterias; linha++)
     {
@@ -66,7 +66,7 @@ void DescobrirSituacao(string [,] boletim)
         {
             boletim[linha, 6] = "Aprovado";
         }
-        else if (media > 5 && media < 7)
+        else if (media > 5)
         {
             boletim[linha, 6] = "Recuperação";
         }
@@ -77,7 +77,7 @@ void DescobrirSituacao(string [,] boletim)
     }
 }
 
-void ImprimirBoletim(string [,] matriz, int quantidadeMaterias, int tamanhoColuna) //Ajeitado para parecer um boletim escolar,(pesquisei)
+void ImprimirBoletim(string[,] boletim, int quantidadeMaterias, int tamanhoColuna) //Ajeitado para parecer um boletim escolar,(pesquisei)
 {
     Console.WriteLine(
     "Matéria".PadRight(15) +
@@ -93,7 +93,7 @@ void ImprimirBoletim(string [,] matriz, int quantidadeMaterias, int tamanhoColun
     {
         for (int coluna = 0; coluna < tamanhoColuna; coluna++)
         {
-            Console.Write($"{matriz[linha, coluna].PadRight(15)}");
+            Console.Write($"{boletim[linha, coluna].PadRight(15)}");
         }
         Console.WriteLine(" ");
     }
